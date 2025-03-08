@@ -28,9 +28,13 @@ services:
       - /etc/machine-id:/etc/machine-id:ro
       - /run/systemd/journal/socket:/run/systemd/journal/socket:ro
       - /run/log/journal:/run/log/journal:ro
-      # to allow sys-API access to read hdd's
-      # alternatively mount in each device you'd like to monitor
+      # to allow sys-API access to read info about disks
       - /dev:/dev:ro
       # same as above
       - /srv:/srv:ro
+      # show correct os info in about server screen
+      - /etc/os-release:/etc/os-release
+    # temperature monitoring of disks
+    #devices:
+    #  - "/dev/sda:/dev/sda"
     restart: unless-stopped
