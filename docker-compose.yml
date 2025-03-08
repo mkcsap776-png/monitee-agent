@@ -6,6 +6,8 @@ services:
     image: krillsson/sys-api:latest
     # exposes NIC's for sys-API to read
     network_mode: host
+    cap_add:
+      - SYS_RAWIO
     # Uncomment if you don't want to run in network_mode: host
     # ports:
     # - "8080:8080"
