@@ -1,4 +1,6 @@
 ### Unreleased
+
+### 0.36.0
 - Feature: HDD temperatures
   - Docker requirement: add devices you'd like to monitor. E.g: --device=/dev/sda
   - Linux standalone requirement: depends on smartctl. `sudo apt-get install smartmontools`
