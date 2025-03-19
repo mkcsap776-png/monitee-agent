@@ -101,8 +101,17 @@ task jibJvm(type: com.google.cloud.tools.jib.gradle.BuildImageTask) {
                     }
                 }
             }
-            def tag = findProperty("buildType") == "release" ? "latest" : "nightly"
-            to.image = "krillsson/sys-api:$tag"
+            to {
+                def tag = findProperty("buildType") == "release" ? "latest" : "nightly"
+                image = "krillsson/sys-api:$tag"
+                def semVerRegex = /^\d+\.\d+\.\d+$/
+                def semVerTag = findProperty("semVerTag")?.toString()?.trim()
+                if (semVerTag && semVerTag.matches(semVerRegex) && tag == "latest") {
+                    tags = [semVerTag]
+                } else {
+                    tags = []  // Explicitly set an empty list if no valid SemVer tag
+                }
+            }
         }
     }
 }
@@ -121,8 +130,17 @@ task jibNativeImage(type: com.google.cloud.tools.jib.gradle.BuildImageTask) {
             jib.from {
                 image = 'krillsson/openjdk21-ubuntu-systemd:latest'
             }
-            def tag = findProperty("buildType") == "release" ? "native" : "native-nightly"
-            to.image = "krillsson/sys-api:$tag"
+            to {
+                def tag = findProperty("buildType") == "release" ? "native" : "native-nightly"
+                image = "krillsson/sys-api:$tag"
+                def semVerRegex = /^\d+\.\d+\.\d+$/
+                def semVerTag = findProperty("semVerTag")?.toString()?.trim()
+                if (semVerTag && semVerTag.matches(semVerRegex) && tag == "native") {
+                    tags = [semVerTag + "-native"]
+                } else {
+                    tags = []  // Explicitly set an empty list if no valid SemVer tag
+                }
+            }
             pluginExtensions {
                 pluginExtension {
                     implementation = 'com.google.cloud.tools.jib.gradle.extension.nativeimage.JibNativeImageExtension'
