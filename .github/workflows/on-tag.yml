@@ -24,9 +24,9 @@ jobs:
           set-java-home: 'true'
           native-image-job-reports: 'true'
       - name: Upload JVM build to Docker Hub
-        run: ./gradlew jibJvm -PbuildType="release"
+        run: ./gradlew jibJvm -PbuildType="release" -PsemVerTag="${{  github.ref_name }}"
       - name: Upload Graal native build to Docker Hub
-        run: ./gradlew jibNativeImage -PbuildType="release"
+        run: ./gradlew jibNativeImage -PbuildType="release" -PsemVerTag="${{  github.ref_name }}"
       - name: Build shadowJar
         run: ./gradlew shadowDistZip
       - name: Build .deb
