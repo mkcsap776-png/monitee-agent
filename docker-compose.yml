@@ -32,8 +32,6 @@ services:
       - /run/log/journal:/run/log/journal:ro
       # to allow sys-API access to read info about disks
       - /dev:/dev:ro
-      # same as above
-      - /srv:/srv:ro
       # show correct os info in about server screen
       - /etc/os-release:/etc/os-release
     # temperature monitoring of disks
