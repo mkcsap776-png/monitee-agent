@@ -1,4 +1,6 @@
 ### Unreleased
+
+### 0.37.2
 - Feature: add healthcheck endpoint to support TrueNAS
   - Set `management.endpoint.health.enabled=false` in application.properties to disable
 
