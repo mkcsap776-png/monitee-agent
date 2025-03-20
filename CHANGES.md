@@ -1,5 +1,6 @@
 ### Unreleased
 - Feature: add healthcheck endpoint to support TrueNAS
+  - Set `management.endpoint.health.enabled=false` in application.properties to disable
 
 ### 0.37.0
 - Feature: added `monitoredItem` API to Monitor. To support showing monitored item name instead of id.
