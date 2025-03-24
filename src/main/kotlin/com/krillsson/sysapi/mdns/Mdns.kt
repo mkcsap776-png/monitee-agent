@@ -36,28 +36,36 @@ class Mdns(
     fun register() {
         val localIp = connectivityCheckService.findLocalIp()
         val connectorPorts: List<Pair<String, Int>> = connectorPorts()
-        jmdns = JmDNS.create(localIp)
-        threadPoolTaskExecutor.execute {
-            connectorPorts
-                // sorts https to be first
-                .sortedByDescending { it.first.length }
-                .forEach { (scheme, port) ->
-                    val serviceType = "_$scheme._tcp.local"
-                    val serviceName = EnvironmentUtils.hostName
-                    logger.info("Registering mDNS $serviceName $scheme:$port")
-                    try {
-                        val result = measureTime {
-                            val serviceInfo = ServiceInfo.create(serviceType, serviceName, port, "GraphQL at /graphql")
-                            jmdns.registerService(serviceInfo)
-                        }
-                        logger.info("Registered mDNS: $serviceType with name: $serviceName at port $port (took ${result.inWholeMilliseconds}ms)")
-                    } catch (e: Exception) {
-                        logger.error(
-                            "Failed to register mDNS: $serviceType with name: $serviceName at port $port. Message: ${e.message}",
-                            e
-                        )
+        try {
+            jmdns = JmDNS.create(localIp)
+            threadPoolTaskExecutor.execute {
+                connectorPorts
+                    // sorts https to be first
+                    .sortedByDescending { it.first.length }
+                    .forEach { (scheme, port) ->
+                        registerService(scheme, port)
                     }
-                }
+            }
+        } catch (e: Exception) {
+            logger.error("Failed to register MDNS for $localIp", e)
+        }
+    }
+
+    private fun registerService(scheme: String, port: Int) {
+        val serviceType = "_$scheme._tcp.local"
+        val serviceName = EnvironmentUtils.hostName
+        logger.info("Registering mDNS $serviceName $scheme:$port")
+        try {
+            val result = measureTime {
+                val serviceInfo = ServiceInfo.create(serviceType, serviceName, port, "GraphQL at /graphql")
+                jmdns.registerService(serviceInfo)
+            }
+            logger.info("Registered mDNS: $serviceType with name: $serviceName at port $port (took ${result.inWholeMilliseconds}ms)")
+        } catch (e: Exception) {
+            logger.error(
+                "Failed to register mDNS: $serviceType with name: $serviceName at port $port. Message: ${e.message}",
+                e
+            )
         }
     }
 

@@ -1,4 +1,5 @@
 ### Unreleased
+- Fix: another crash related to mDNS on TrueNAS
 
 ### 0.37.3
 - Fix: UPnP and mDNS now support passing the application ports as ENV vars. Previously they were reading the config. 
