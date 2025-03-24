@@ -1,4 +1,6 @@
 ### Unreleased
+
+### 0.37.4
 - Fix: another crash related to mDNS on TrueNAS
 
 ### 0.37.3
