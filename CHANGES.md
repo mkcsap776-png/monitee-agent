@@ -1,5 +1,7 @@
 ### Unreleased
 
+### 0.37.5
+
 - Fix: slow response times and poor performance when using monitors. And lots of "Long running query" messages in the
   log
 - Feature: API instrumentation logging is now opt-in. Enable it via the graphql instrumentation entry in
