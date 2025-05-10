@@ -1,5 +1,7 @@
 ### Unreleased
 
+### 0.37.6
+
 - Fix: application failed to start with "there was no ServletWebServerFactory bean defined in the context."
 
 ### 0.37.5
