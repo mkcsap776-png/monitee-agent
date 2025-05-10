@@ -26,13 +26,6 @@ jobs:
           native-image-job-reports: 'true'
       - name: Upload JVM build to Docker Hub
         run: ./gradlew jibJvm
-      - name: Build shadowJar
-        run: ./gradlew shadowDistZip
-      - name: Store distribution artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: shadow-dist
-          path: build/distributions/*.zip
   build-deb:
     name: Build sys-API deb package
     runs-on: ubuntu-latest
