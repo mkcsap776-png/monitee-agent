@@ -3,6 +3,9 @@
     "interfaces":["com.krillsson.sysapi.core.connectivity.ExternalIpAddressService"]
   },
   {
+    "interfaces":["com.krillsson.sysapi.core.history.db.BasicHistorySystemLoadDAO2","org.springframework.data.repository.Repository","org.springframework.transaction.interceptor.TransactionalProxy","org.springframework.aop.framework.Advised","org.springframework.core.DecoratingProxy"]
+  },
+  {
     "interfaces":["com.krillsson.sysapi.core.history.db.ConnectivityDAO","org.springframework.data.repository.Repository","org.springframework.transaction.interceptor.TransactionalProxy","org.springframework.aop.framework.Advised","org.springframework.core.DecoratingProxy"]
   },
   {
@@ -13,6 +16,9 @@
   },
   {
     "interfaces":["com.krillsson.sysapi.core.history.db.FileSystemLoadDAO","org.springframework.data.repository.Repository","org.springframework.transaction.interceptor.TransactionalProxy","org.springframework.aop.framework.Advised","org.springframework.core.DecoratingProxy"]
+  },
+  {
+    "interfaces":["com.krillsson.sysapi.core.history.db.HistorySystemLoadDAO2","org.springframework.data.repository.Repository","org.springframework.transaction.interceptor.TransactionalProxy","org.springframework.aop.framework.Advised","org.springframework.core.DecoratingProxy"]
   },
   {
     "interfaces":["com.krillsson.sysapi.core.history.db.MemoryLoadDAO","org.springframework.data.repository.Repository","org.springframework.transaction.interceptor.TransactionalProxy","org.springframework.aop.framework.Advised","org.springframework.core.DecoratingProxy"]
@@ -157,6 +163,9 @@
   },
   {
     "interfaces":["org.springframework.graphql.data.method.annotation.Argument"]
+  },
+  {
+    "interfaces":["org.springframework.graphql.data.method.annotation.BatchMapping"]
   },
   {
     "interfaces":["org.springframework.graphql.data.method.annotation.SchemaMapping"]
