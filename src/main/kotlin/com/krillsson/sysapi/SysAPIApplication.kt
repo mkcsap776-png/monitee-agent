@@ -1,5 +1,6 @@
 package com.krillsson.sysapi
 
+import SlowResolverWarningInstrumentation
 import com.github.dockerjava.api.model.AuthConfig
 import com.github.dockerjava.core.DockerConfigFile
 import com.krillsson.sysapi.config.*
@@ -41,7 +42,8 @@ import org.springframework.context.annotation.ImportRuntimeHints
     GenericEventStore.StoredGenericEvent.MonitoredItemMissing::class,
     EventStore.StoredEvent::class,
     MonitorStore.StoredMonitor::class,
-    AuthConfig::class
+    AuthConfig::class,
+    SlowResolverWarningInstrumentation::class,
 )
 // https://www.graalvm.org/latest/reference-manual/native-image/dynamic-features/JNI/
 // Failed to parse docker config.json
