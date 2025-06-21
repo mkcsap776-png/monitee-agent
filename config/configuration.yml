@@ -60,7 +60,7 @@ updateCheck:
 notifications:
   # serverName: MyServer
   ntfy:
-    enabled: true
+    enabled: false
     url: "https://ntfy.sh"
     # topic: my-custom-globally-unique-topic
 # advertise service in local network for easier client setup

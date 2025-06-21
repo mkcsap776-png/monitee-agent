@@ -1,5 +1,12 @@
 ### Unreleased
 
+### 0.38.0
+
+- Feature: [Ntfy](https://ntfy.sh/) notifications support. 
+  - Opt-in by enabling it in the [configuration.yml](https://github.com/Krillsson/monitee-agent/blob/17e43c06f5d740235706b0771e41004a383130f0/config/configuration.yml#L63) 
+  - Monitee-agent can now send push notifications to the Monitee app via the third-party service
+  - Initially, it sends monitor alerts and notices about new versions of monitee-agent 
+
 ### 0.37.6
 
 - Fix: application failed to start with "there was no ServletWebServerFactory bean defined in the context."
