@@ -20,6 +20,9 @@ metricsConfig:
 user:
   username: user
   password: password
+processes:
+  # disable to release some RAM
+  enabled: true
 windows:
   enableOhmJniWrapper: true
   eventLog:
