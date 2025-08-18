@@ -1,5 +1,7 @@
 ### Unreleased
 
+### 0.39.0
+
 - Fix: addressed excessive RAM usage by capping heap size in JVM options
 - Feature: customize temperature unit in notifications. See formatting section in the configuration.yml file.
 
