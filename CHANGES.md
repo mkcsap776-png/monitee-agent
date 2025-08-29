@@ -1,5 +1,7 @@
 ### Unreleased
 
+### 0.39.1
+
 - Fix: prevent spinning up disks while querying for temperature using smartctl
 
 ### 0.39.0
